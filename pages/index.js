@@ -12,20 +12,29 @@ import GitHub from "components/Icons/Github"
 import { Logo } from "Components/Icons/Logo"
 
 import { checkAuthUser, loginWithGitHub } from "../firebase/client"
+import { useRouter } from "next/router"
 
 export default function Home() {
   const [user, setUser] = useState(undefined)
+  const router = useRouter()
   console.log(`I AM IN THE user${user}`)
   useEffect(() => {
     console.log("I AM THE USE EFFECT BEFORE CHEACKAUTH METHOD")
     checkAuthUser(setUser)
     console.log("I AM THE USE EFFECT AFTER CHEACKAUTH METHOD")
   }, [])
+
+  useEffect(() => {
+    user && router.replace("/home")
+  })
   const handleClick = () => {
-    loginWithGitHub().then((user) => {
-      const { avatar, username, email } = user
-      setUser(avatar, username, email)
-    })
+    loginWithGitHub().then(
+      (user) => {
+        const { avatar, username, email } = user
+        setUser(avatar, username, email)
+      },
+      [user]
+    )
   }
 
   return (
@@ -60,10 +69,7 @@ export default function Home() {
                 <Avatar alt={user.username} src={user.avatar} text={user.email} withText={true} />
               </div>
             ) : (
-              <div className="loader">
-                <div className="loader-wheel"></div>
-                <div className="loader-text"></div>
-              </div>
+              <span>. . . . Loading</span>
             )}
           </div>
         </section>
