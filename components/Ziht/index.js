@@ -1,6 +1,13 @@
 import Avatar from "components/Avatar"
 
-export default function Zhit({ avatar, username, message, id }) {
+export default function Zhit({
+  id,
+  avatar,
+  content,
+  createdAt,
+  userId,
+  username,
+}) {
   return (
     <>
       <article key={id}>
@@ -8,8 +15,13 @@ export default function Zhit({ avatar, username, message, id }) {
           <Avatar alt={username} src={avatar} />
         </div>
         <section>
-          <strong>{username}</strong>
-          <p>{message}</p>
+          <header>
+            <strong>{username}</strong>
+            <span> . </span>
+            <time>{createdAt}</time>
+          </header>
+
+          <p>{content}</p>
         </section>
       </article>
       <style jsx>

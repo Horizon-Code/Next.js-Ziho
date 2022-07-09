@@ -1,5 +1,9 @@
 import css from "styled-jsx/css"
-import { breakpoints, fonts, colors } from "../../styles/theme"
+import {
+  breakpoints,
+  fonts,
+  colors,
+} from "../../styles/theme"
 import { addOpacity } from "../../styles/utils"
 
 const backgroundColor = addOpacity(colors.primary, 1)
@@ -24,7 +28,15 @@ body {
 
     * {
         box - sizing: border-box;
-}`
+}
+textarea,
+input  { 
+  
+  font-family: ${fonts.base};
+}
+
+
+`
 
 export default css`
   div {
@@ -37,6 +49,7 @@ export default css`
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     height: 100%;
+    overflow-y: auto;
     position: relative;
     width: 100%;
   }

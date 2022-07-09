@@ -2,7 +2,9 @@
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
-        "@c/*":["components/*"]
+        "@c/*":["components/*"],
+        "@h/*":["hooks/*"],
+        "@f/*":["firebase/*"],
       }
     } 
 }
