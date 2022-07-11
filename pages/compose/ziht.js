@@ -1,5 +1,8 @@
 import { useState } from "react"
+
 import { useRouter } from "next/router"
+import Head from "next/head"
+
 import AppLayout from "@c/AppLayout/AppLayout"
 import Button from "@c/Button/Button"
 import useUser from "@h/useUser"
@@ -52,6 +55,9 @@ export default function ComposeZiht() {
   return (
     <>
       <AppLayout>
+        <Head>
+          <title>✉️!🤗</title>
+        </Head>
         <form onSubmit={handleSubmit}>
           <textarea
             onChange={handleChange}

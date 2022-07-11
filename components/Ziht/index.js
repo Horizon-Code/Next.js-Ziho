@@ -1,4 +1,5 @@
 import Avatar from "components/Avatar"
+import useTimeAgo from "@h/useTimeAgo"
 
 export default function Zhit({
   id,
@@ -8,6 +9,9 @@ export default function Zhit({
   userId,
   username,
 }) {
+  // hook to handle the timeago from createdAt property
+  const timeago = useTimeAgo(createdAt)
+
   return (
     <>
       <article key={id}>
@@ -18,7 +22,7 @@ export default function Zhit({
           <header>
             <strong>{username}</strong>
             <span> . </span>
-            <time>{createdAt}</time>
+            <time>{timeago}</time>
           </header>
 
           <p>{content}</p>

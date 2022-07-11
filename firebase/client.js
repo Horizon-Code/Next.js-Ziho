@@ -76,8 +76,9 @@ export const addZiht = ({
     content,
     userId,
     username,
-    createdAt:
-      firebase.firestore.FieldValue.serverTimestamp(),
+    createdAt: firebase.firestore.Timestamp.fromDate(
+      new Date()
+    ),
     likesCount: 0,
     sharedCount: 0,
   })
@@ -92,10 +93,11 @@ export const fetchLastZihts = () => {
     .then((snapshot) => {
       return snapshot.docs.map((doc) => {
         const data = doc.data()
+        const { createdAt } = data
         return {
           ...data,
           id: doc.id,
-          createdAt: data.createdAt.toDate().toString(),
+          createdAt: +createdAt.toDate(),
         }
       })
     })
