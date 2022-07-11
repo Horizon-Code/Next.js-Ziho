@@ -25,22 +25,9 @@ export default function HomePage() {
       <AppLayout>
         <Head>
           <title>🏠Home</title>
-          <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-          ></link>
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin
-          ></link>
-          <link
-            href="https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap"
-            rel="stylesheet"
-          ></link>
         </Head>
         <header>
-          <h3>Kon&quot;nichiwa</h3>
+          <h3>Kon&apos;nichiwa</h3>
         </header>
         <section>
           {timeline.map(
