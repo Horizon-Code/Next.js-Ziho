@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app"
 import "firebase/compat/auth"
 import "firebase/compat/firestore"
+import "firebase/compat/storage"
 import { getAuth } from "firebase/auth"
 
 const firebaseConfig = {
@@ -67,6 +68,7 @@ export const loginWithGitHub = () => {
 export const addZiht = ({
   avatar,
   content,
+  img,
   userId,
   username,
 }) => {
@@ -74,6 +76,7 @@ export const addZiht = ({
   return db.collection("zihts").add({
     avatar,
     content,
+    img,
     userId,
     username,
     createdAt:
@@ -99,4 +102,16 @@ export const fetchLastZihts = () => {
         }
       })
     })
+}
+
+export const uploadImage = (file) => {
+  const ref = firebase.storage().ref(`images/${file.name}`)
+  // const ref = firebase
+  //   .storage()
+  //   .ref("images")
+  //   .child(file.name)
+
+  const task = ref.put(file)
+
+  return task
 }
