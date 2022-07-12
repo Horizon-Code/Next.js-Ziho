@@ -7,6 +7,7 @@ import Button from "@c/Button/Button"
 import useUser from "@h/useUser"
 
 import { addZiht, uploadImage } from "@f/client"
+import Avatar from "components/Avatar"
 
 const COMPOSE_STATES = {
   USER_NOT_KNOWN: 0,
@@ -112,32 +113,44 @@ export default function ComposeZiht() {
         <Head>
           <title>✉️!🤗</title>
         </Head>
-        <form onSubmit={handleSubmit}>
-          <textarea
-            onChange={handleChange}
-            onDragEnter={handleDragEnter}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop}
-            value={message}
-            placeholder="Que has aprendido?"
-          ></textarea>
-          {imageURL && (
-            <section>
-              <button onClick={() => setImageURL(null)}>
-                x
-              </button>
-              <img src={imageURL} />
+        <section className="form-container">
+          {user && (
+            <section className="avatar-container">
+              <Avatar src={user.avatar} />
             </section>
           )}
-          <div>
-            <Button disabled={isButtonDisabled}>
-              Post
-            </Button>
-          </div>
-        </form>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              onChange={handleChange}
+              onDragEnter={handleDragEnter}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              value={message}
+              placeholder="Que has aprendido?"
+            ></textarea>
+            {imageURL && (
+              <section>
+                <button onClick={() => setImageURL(null)}>
+                  x
+                </button>
+                <img src={imageURL} />
+              </section>
+            )}
+            <div>
+              <Button disabled={isButtonDisabled}>
+                Post
+              </Button>
+            </div>
+          </form>
+        </section>
       </AppLayout>
       <style jsx>
         {`
+          .avatar-container {
+            padding-top: 20px;
+            padding-left: 10px;
+          }
+
           button {
             background: rgba(0, 0, 0, 0.2);
             border: 0;
@@ -150,16 +163,19 @@ export default function ComposeZiht() {
             left: 38%;
             width: 10%;
             height: 10%;
-
             position: relative;
           }
           div {
             padding: 15px;
             border-top: 1px solid #eee;
           }
+          form {
+            padding: 15px;
+          }
 
-          section {
-            position: relative;
+          .form-container {
+            align-items: flex-start;
+            display: flex;
           }
 
           img {
@@ -168,8 +184,8 @@ export default function ComposeZiht() {
             width: 50%;
           }
 
-          form {
-            padding: 15px;
+          section {
+            position: relative;
           }
 
           textarea {
@@ -184,7 +200,7 @@ export default function ComposeZiht() {
             outline: 0;
             padding: 15px;
             resize: none;
-            width: 92%;
+            width: 100%;
           }
         `}
       </style>

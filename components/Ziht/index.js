@@ -8,6 +8,7 @@ export default function Zhit({
   createdAt,
   userId,
   username,
+  img,
 }) {
   // hook to handle the timeago from createdAt property
   const timeago = useTimeAgo(createdAt)
@@ -26,6 +27,7 @@ export default function Zhit({
           </header>
 
           <p>{content}</p>
+          {img && <img src={img} alt={content} />}
         </section>
       </article>
       <style jsx>
@@ -34,6 +36,11 @@ export default function Zhit({
             border-bottom: 2px solid #eaf7ff;
             display: flex;
             padding: 10px 10px;
+          }
+          img {
+            border-radius: 10px;
+            height: auto;
+            margin-top: 10px;
           }
 
           div {

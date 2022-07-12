@@ -36,6 +36,7 @@ export default function HomePage() {
               avatar,
               content,
               createdAt,
+              img,
               userId,
               username,
             }) => {
@@ -47,6 +48,7 @@ export default function HomePage() {
                   avatar={avatar}
                   createdAt={createdAt}
                   content={content}
+                  img={img}
                 />
               )
             }
