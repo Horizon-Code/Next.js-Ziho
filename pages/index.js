@@ -5,7 +5,6 @@ import { useEffect } from "react"
 import styles from "styles/Home.module.css"
 import { colors } from "styles/theme"
 
-import AppLayout from "components/AppLayout/AppLayout"
 import Avatar from "components/Avatar"
 import Button from "components/Button/button"
 import GitHub from "components/Icons/Github"
@@ -40,49 +39,43 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AppLayout>
-        {console.log("I AM IN THE AppLayout")}
-        <section>
-          <Logo width="150" />
-          <h1>Welcome to Ziho!</h1>
-          <h2>Zihoniens are the citizens from Ziho!</h2>
-          <div>
-            {/* In the code below you can see that if the user is null,
+      {console.log("I AM IN THE AppLayout")}
+      <section>
+        <Logo width="150" />
+        <h1>Welcome to Ziho!</h1>
+        <h2>Zihoniens are the citizens from Ziho!</h2>
+        <div>
+          {/* In the code below you can see that if the user is null,
         The button of Github Login is displayed.
         If the user is not null and not undefined the userWelcomeDiv
         is displayed.
         Otherwise/whatsgon bruh! */}
-            {user === USER_STATE.NOT_AUTHENTICATED ? (
-              <Button onClick={handleClick}>
-                {console.log("I AM IN THE Button")}
-                <GitHub
-                  fill="#fff"
-                  width={24}
-                  height={24}
-                />
-                Login with Github
-              </Button>
-            ) : user && user.avatar ? (
-              <div
-                className="userWelcomeDiv"
-                style={styles.container}
-              >
-                {console.log(
-                  `I AM IN THE userWelcomeDiv ${user.email}`
-                )}
-                <Avatar
-                  alt={user.username}
-                  src={user.avatar}
-                  text={user.email}
-                  withText={true}
-                />
-              </div>
-            ) : (
-              <div className="spinner"></div>
-            )}
-          </div>
-        </section>
-      </AppLayout>
+          {user === USER_STATE.NOT_AUTHENTICATED ? (
+            <Button onClick={handleClick}>
+              {console.log("I AM IN THE Button")}
+              <GitHub fill="#fff" width={24} height={24} />
+              Login with Github
+            </Button>
+          ) : user && user.avatar ? (
+            <div
+              className="userWelcomeDiv"
+              style={styles.container}
+            >
+              {console.log(
+                `I AM IN THE userWelcomeDiv ${user.email}`
+              )}
+              <Avatar
+                alt={user.username}
+                src={user.avatar}
+                text={user.email}
+                withText={true}
+              />
+            </div>
+          ) : (
+            <div className="spinner"></div>
+          )}
+        </div>
+      </section>
       <style jsx>
         {`
           div > img {

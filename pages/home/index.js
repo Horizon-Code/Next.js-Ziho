@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 
-import AppLayout from "components/AppLayout/AppLayout"
 import Ziht from "components/Ziht"
 import Create from "components/icons/Create"
 
@@ -22,64 +21,54 @@ export default function HomePage() {
   // Head es de nextjs nos permite poner cualquier metatag en el head de la pagina
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>🏠Home</title>
-        </Head>
-        <header>
-          <h3>Kon&apos;nichiwa</h3>
-        </header>
-        <section>
-          {timeline.map(
-            ({
-              id,
-              avatar,
-              content,
-              createdAt,
-              img,
-              userId,
-              username,
-            }) => {
-              return (
-                <Ziht
-                  key={id}
-                  userId={userId}
-                  username={username}
-                  avatar={avatar}
-                  createdAt={createdAt}
-                  content={content}
-                  img={img}
-                />
-              )
-            }
-          )}
-        </section>
-        <nav>
-          <Link href="/home">
-            <a>
-              <Home width={32} height={32} stroke="#09f" />
-            </a>
-          </Link>
-          <Link href="/search">
-            <a>
-              <Search
-                width={32}
-                height={32}
-                stroke="#09f"
+      <Head>
+        <title>🏠Home</title>
+      </Head>
+      <header>
+        <h3>Kon&apos;nichiwa</h3>
+      </header>
+      <section>
+        {timeline.map(
+          ({
+            id,
+            avatar,
+            content,
+            createdAt,
+            img,
+            userId,
+            username,
+          }) => {
+            return (
+              <Ziht
+                key={id}
+                userId={userId}
+                username={username}
+                avatar={avatar}
+                createdAt={createdAt}
+                content={content}
+                img={img}
               />
-            </a>
-          </Link>
-          <Link href="/compose/ziht">
-            <a>
-              <Create
-                width={32}
-                height={32}
-                stroke="#09f"
-              />
-            </a>
-          </Link>
-        </nav>
-      </AppLayout>
+            )
+          }
+        )}
+      </section>
+      <nav>
+        <Link href="/home">
+          <a>
+            <Home width={32} height={32} stroke="#09f" />
+          </a>
+        </Link>
+        <Link href="/search">
+          <a>
+            <Search width={32} height={32} stroke="#09f" />
+          </a>
+        </Link>
+        <Link href="/compose/ziht">
+          <a>
+            <Create width={32} height={32} stroke="#09f" />
+          </a>
+        </Link>
+      </nav>
       <style jsx>
         {`
           header {

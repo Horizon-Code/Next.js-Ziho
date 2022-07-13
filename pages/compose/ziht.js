@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
 
-import AppLayout from "@c/AppLayout/AppLayout"
 import Button from "@c/Button/Button"
 import useUser from "@h/useUser"
 
@@ -109,41 +108,39 @@ export default function ComposeZiht() {
 
   return (
     <>
-      <AppLayout>
-        <Head>
-          <title>✉️!🤗</title>
-        </Head>
-        <section className="form-container">
-          {user && (
-            <section className="avatar-container">
-              <Avatar src={user.avatar} />
+      <Head>
+        <title>✉️!🤗</title>
+      </Head>
+      <section className="form-container">
+        {user && (
+          <section className="avatar-container">
+            <Avatar src={user.avatar} />
+          </section>
+        )}
+        <form onSubmit={handleSubmit}>
+          <textarea
+            onChange={handleChange}
+            onDragEnter={handleDragEnter}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            value={message}
+            placeholder="Que has aprendido?"
+          ></textarea>
+          {imageURL && (
+            <section>
+              <button onClick={() => setImageURL(null)}>
+                x
+              </button>
+              <img src={imageURL} />
             </section>
           )}
-          <form onSubmit={handleSubmit}>
-            <textarea
-              onChange={handleChange}
-              onDragEnter={handleDragEnter}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              value={message}
-              placeholder="Que has aprendido?"
-            ></textarea>
-            {imageURL && (
-              <section>
-                <button onClick={() => setImageURL(null)}>
-                  x
-                </button>
-                <img src={imageURL} />
-              </section>
-            )}
-            <div>
-              <Button disabled={isButtonDisabled}>
-                Post
-              </Button>
-            </div>
-          </form>
-        </section>
-      </AppLayout>
+          <div>
+            <Button disabled={isButtonDisabled}>
+              Post
+            </Button>
+          </div>
+        </form>
+      </section>
       <style jsx>
         {`
           .avatar-container {
