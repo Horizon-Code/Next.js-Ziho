@@ -58,6 +58,7 @@ export const loginWithGitHub = () => {
     .auth()
     .signInWithPopup(githubProvider)
     .then((user) => {
+      console.log(user)
       return mapUserFromFirebaseAuthToUser(user)
     })
     .catch((error) => {
