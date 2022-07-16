@@ -6,7 +6,8 @@
 .pnp.js
 
 #firebase
-./firebase-keys.json
+/firebase
+.firebase-keys.json
 
 # testing
 /coverage
