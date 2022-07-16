@@ -6,7 +6,6 @@
 .pnp.js
 
 #firebase
-/firebase
 .firebase-keys.json
 
 # testing
